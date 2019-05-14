@@ -4,13 +4,13 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.util.Random;
+//import java.util.Random;
 
 public class Game extends Canvas implements Runnable
 {
     private static final long serialVersionUID = 1L;
     
-    public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9; // 16/9 aspect ratio
+    public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9; // 12/9 aspect ratio
     private Thread thread;
     private boolean running = false;
     
