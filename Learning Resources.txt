@@ -1,0 +1,25 @@
+Youtube videos: 
+vanZeben "Lets make a game" playlist
+
+
+Websites:
+Stack Overflow
+Oracles
+Java Tutorial (offical java website)
+
+
+APIs:
+bufferedimage 
+bufferedStrategy
+JFrame
+JPanel
+JLabel
+Canvas
+KeyListener
+Graphics
+Thread
+LinkedList
+
+
+Ideas;
+Enum's and IDs
