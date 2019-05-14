@@ -1,4 +1,4 @@
-package defaultPackage;
+ 
 
 public enum ID {
 	

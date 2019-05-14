@@ -1,28 +1,29 @@
-package defaultPackage;
+ 
 
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 public class Game extends Canvas implements Runnable
 {
-	private static final long serialVersionUID = 1L;
-	
-	public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9; // 16/9 aspect ratio
-	private Thread thread;
-	private boolean running = false;
+    private static final long serialVersionUID = 1L;
     
-	private Handler handler;
-	
+    public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9; // 16/9 aspect ratio
+    private Thread thread;
+    private boolean running = false;
+    
+    private Handler handler;
+    
     public Game(){
-    	
-    	handler = new Handler();
-    	this.addKeyListener(new KeyInput(handler));
-    	
+        
+        handler = new Handler();
+        this.addKeyListener(new KeyInput(handler));
+        
         new Window(WIDTH, HEIGHT, "Bullet Heck", this);
         
-        handler.addObject(new Player(200, 200, ID.Player));
+        handler.addObject(new Player(100, 100, ID.Player));
     }
     
     
@@ -60,42 +61,42 @@ public class Game extends Canvas implements Runnable
     }
        
     private void tick() {
-    	handler.tick();
+        handler.tick();
     }
     
     private void render() {
-    	BufferStrategy bs = this.getBufferStrategy();
-    	if (bs == null) {
-    		this.createBufferStrategy(3);
-    		return;
-    	}
-    	
-    	Graphics g = bs.getDrawGraphics();
-    	
-    	g.setColor(Color.black);
-    	g.fillRect( 0, 0, WIDTH, HEIGHT);
-    	
-    	handler.render(g);
-    	
-    	g.dispose();
-    	bs.show();
+        BufferStrategy bs = this.getBufferStrategy();
+        if (bs == null) {
+            this.createBufferStrategy(3);
+            return;
+        }
+        
+        Graphics g = bs.getDrawGraphics();
+        
+        g.setColor(Color.black);
+        g.fillRect( 0, 0, WIDTH, HEIGHT);
+        
+        handler.render(g);
+        
+        g.dispose();
+        bs.show();
     }
 
     //-----start and stop-----
-	public synchronized void start(){
+    public synchronized void start(){
         thread = new Thread(this);
         thread.start();
         running = true;
     }
     public synchronized void stop(){
-    	try {
-    		thread.join();
-    		running = false;
-    	}catch(Exception e) {
-    		e.printStackTrace();
-    	}
+        try {
+            thread.join();
+            running = false;
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
     }
-	
+    
     public static void main(String args[]){
       new Game(); 
     }

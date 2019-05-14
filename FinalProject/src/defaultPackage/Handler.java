@@ -1,4 +1,4 @@
-package defaultPackage;
+ 
 
 import java.awt.Graphics;
 import java.util.LinkedList;
