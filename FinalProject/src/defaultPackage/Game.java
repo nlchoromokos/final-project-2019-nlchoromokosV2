@@ -23,6 +23,7 @@ public class Game extends Canvas implements Runnable
         
         new Window(WIDTH, HEIGHT, "Bullet Heck", this);
         
+        handler.addObject(new Projectile(10,10, ID.Enemy));
         handler.addObject(new Player(100, 100, ID.Player, "sprites/DefaultPlayer.png"));
     }
     
