@@ -25,15 +25,21 @@ public class Player extends GameObject {
 
     
     public void tick() {
-        x += velX;
-        y += velY;
+        if(x+velX > 0 && x+33+velX < 640)
+        {
+            x += velX;
+        }
+        if(y+velY > 0 && y+64+velY < (480))
+        {
+            y += velY;
+        }
     }
 
     
     public void render(Graphics g) {
         g.setColor(Color.white);
         g.drawImage(img, x, y, 32, 32, null);
-        g.drawRect(x, y, 32, 32);
+        g.fillRect(x, y, 32, 32);
     }
 
 }
