@@ -1,0 +1,33 @@
+Youtube:
+VanZeben
+gameTutGML
+
+
+Websites:
+Oralce
+Stack Overflow
+Offical java Tutorial Website
+
+APIs:
+Buffered Image
+Buffered Strategy
+JFrame
+JLabel
+JPanel
+Graphics
+Rectanlge
+Icon
+Image
+Picture
+LinkedLists
+KeyListener
+Canavs
+Threads
+Dimension
+
+Concepts:
+Enumeration
+
+
+
+
