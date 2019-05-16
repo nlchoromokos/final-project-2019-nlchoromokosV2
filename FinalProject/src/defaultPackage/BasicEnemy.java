@@ -1,6 +1,6 @@
 
 /**
- * Write a description of class projectile here.
+ * Write a description of class Basic Enemy here.
  *
  * @author (your name)
  * @version (a version number or a date)
@@ -9,9 +9,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.*;
 
-public class Projectile extends GameObject{
+public class BasicEnemy extends GameObject{
 
-    public Projectile(int x, int y, ID id){
+    public BasicEnemy(int x, int y, ID id){
        super(x,y,id);
        
        velX=1;
@@ -21,6 +21,14 @@ public class Projectile extends GameObject{
     public void tick() {
         x += velX;
         y += velY;
+        
+        //this can be cleaned up with a clamp method
+        if (y <= 0 || y >= Game.HEIGHT - 32) {
+        	velY *= -1;
+        }
+        if (x <= 0 || x >= Game.WIDTH - 32) {
+        	velX *= -1;
+        }
     }
 
     

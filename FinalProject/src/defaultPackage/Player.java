@@ -16,21 +16,17 @@ public class Player extends GameObject {
     
     public Player(int x, int y, ID id, String filepath) {
         super(x, y, id);
-        try
-        {
+        try{
             img = ImageIO.read(new File(filepath));
-        }
-        catch(Exception e){System.out.println(e.toString());}
+        }catch(Exception e){System.out.println(e.toString());}
     }
 
     
     public void tick() {
-        if(x+velX > 0 && x+33+velX < 640)
-        {
+        if(x+velX > 0 && x+33+velX < 640){
             x += velX;
         }
-        if(y+velY > 0 && y+64+velY < (480))
-        {
+        if(y+velY > 0 && y+64+velY < (480)){
             y += velY;
         }
     }

@@ -4,7 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-//import java.util.Random;
+import java.util.Random;
 
 public class Game extends Canvas implements Runnable
 {
@@ -15,15 +15,22 @@ public class Game extends Canvas implements Runnable
     private boolean running = false;
     
     private Handler handler;
+    private Random random;
+    private HUD hud;
     
     public Game(){
         
         handler = new Handler();
+        hud = new HUD();
+        random = new Random();
+        
         this.addKeyListener(new KeyInput(handler));
         
         new Window(WIDTH, HEIGHT, "Bullet Heck", this);
         
-        handler.addObject(new Projectile(10,10, ID.Enemy));
+        for(int i = 0; i < 10; i++) {
+        	handler.addObject(new BasicEnemy(random.nextInt(WIDTH),random.nextInt(HEIGHT), ID.Enemy));
+        }
         handler.addObject(new Player(100, 100, ID.Player, "sprites/DefaultPlayer.png"));
     }
     
@@ -31,6 +38,7 @@ public class Game extends Canvas implements Runnable
     //-----the heart beat of the game, standard game loop used by everyone-----
     public void run()
     {
+    	this.requestFocus();
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 100000000 / amountOfTicks;
@@ -60,11 +68,14 @@ public class Game extends Canvas implements Runnable
         }
                 stop();
     }
-       
+    
+    //updates whatever is in here
     private void tick() {
         handler.tick();
+        hud.tick();
     }
     
+    //draws onto the screen
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
@@ -78,11 +89,21 @@ public class Game extends Canvas implements Runnable
         g.fillRect( 0, 0, WIDTH, HEIGHT);
         
         handler.render(g);
+        hud.render(g);
         
         g.dispose();
         bs.show();
     }
-
+    
+    public static int clamp(int x, int min, int max) {
+		if (x >= max)
+			return x = max;
+		else if(x <= min)
+			return x = min;
+		else
+			return x;  	
+    }
+    
     //-----start and stop-----
     public synchronized void start(){
         thread = new Thread(this);
