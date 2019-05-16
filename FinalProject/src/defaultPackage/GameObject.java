@@ -1,6 +1,7 @@
  
 
 import java.awt.Graphics;
+import java.awt.*;
 //import java.awt.*;
 
 //going to be all the game objects, lets it clump the same kinds of objects into categories
@@ -11,6 +12,7 @@ public abstract class GameObject {
     protected int x, y;
     protected ID id;
     protected int velX, velY;
+    protected Rectangle hitbox;
     
     public GameObject(int x, int y, ID id) {
         this.x = x;

@@ -16,6 +16,8 @@ public class BasicEnemy extends GameObject{
        
        velX=1;
        velY=1;
+       
+       hitbox = new Rectangle(x, y, 16, 16);
     }
     
     public void tick() {
@@ -35,5 +37,6 @@ public class BasicEnemy extends GameObject{
     public void render(Graphics g) {
         g.setColor(Color.red);
         g.fillOval(x, y, 16, 16);
+        hitbox.setLocation(x,y);
     }
 }

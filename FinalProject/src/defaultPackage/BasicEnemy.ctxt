@@ -1,7 +1,7 @@
 #BlueJ class context
-comment0.target=Player
-comment1.params=x\ y\ id\ filepath
-comment1.target=Player(int,\ int,\ ID,\ java.lang.String)
+comment0.target=BasicEnemy
+comment1.params=x\ y\ id
+comment1.target=BasicEnemy(int,\ int,\ ID)
 comment2.params=
 comment2.target=void\ tick()
 comment3.params=g

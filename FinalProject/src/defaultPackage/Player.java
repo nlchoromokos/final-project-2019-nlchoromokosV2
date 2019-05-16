@@ -19,6 +19,8 @@ public class Player extends GameObject {
         try{
             img = ImageIO.read(new File(filepath));
         }catch(Exception e){System.out.println(e.toString());}
+        
+        hitbox = new Rectangle(x,y,32,32);
     }
 
     
@@ -36,6 +38,7 @@ public class Player extends GameObject {
         g.setColor(Color.white);
         g.drawImage(img, x, y, 32, 32, null);
         g.fillRect(x, y, 32, 32);
+        hitbox.setLocation(x,y);
     }
 
 }
