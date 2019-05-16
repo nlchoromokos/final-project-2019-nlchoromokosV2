@@ -13,6 +13,7 @@ import javax.imageio.*;
 
 public class Player extends GameObject {
     private BufferedImage img;
+    private LinkedList<GameObject> objects = new LinkedList<GameObject>();
     
     public Player(int x, int y, ID id, String filepath) {
         super(x, y, id);
@@ -39,6 +40,24 @@ public class Player extends GameObject {
         g.drawImage(img, x, y, 32, 32, null);
         g.fillRect(x, y, 32, 32);
         hitbox.setLocation(x,y);
+        for (int i = 0; i < objects.size(); i++) {
+            if(hitbox.intersects(objects.get(i).getHitbox()))
+            {
+                ;
+            }
+        }
     }
 
+    public void addObject( GameObject object) {
+        this.objects.add(object);
+    }
+    
+    public void removeObject(GameObject object) {
+        this.objects.remove(object);
+    }
+    
+    public void setList(LinkedList<GameObject> list)
+    {
+        objects = list;
+    }
 }

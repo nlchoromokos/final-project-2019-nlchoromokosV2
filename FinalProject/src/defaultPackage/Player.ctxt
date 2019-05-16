@@ -1,9 +1,14 @@
 #BlueJ class context
-comment0.target=Player
-comment1.params=x\ y\ id\ filepath
-comment1.target=Player(int,\ int,\ ID,\ java.lang.String)
-comment2.params=
-comment2.target=void\ tick()
-comment3.params=g
-comment3.target=void\ render(java.awt.Graphics)
-numComments=4
+comment0.params=x\ y\ id\ filepath
+comment0.target=Player(int,\ int,\ ID,\ java.lang.String)
+comment1.params=
+comment1.target=void\ tick()
+comment2.params=g
+comment2.target=void\ render(java.awt.Graphics)
+comment3.params=object
+comment3.target=void\ addObject(GameObject)
+comment4.params=object
+comment4.target=void\ removeObject(GameObject)
+comment5.params=list
+comment5.target=void\ setList(java.util.LinkedList)
+numComments=6
