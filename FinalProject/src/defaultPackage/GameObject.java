@@ -2,7 +2,6 @@
 
 import java.awt.Graphics;
 import java.awt.*;
-//import java.awt.*;
 
 //going to be all the game objects, lets it clump the same kinds of objects into categories
 //all the 'this' is because it access the protected variables at the top
@@ -12,7 +11,7 @@ public abstract class GameObject {
     protected int x, y;
     protected ID id;
     protected int velX, velY;
-    protected Rectangle hitbox;
+
     
     public GameObject(int x, int y, ID id) {
         this.x = x;
@@ -23,6 +22,7 @@ public abstract class GameObject {
     
     public abstract void tick();
     public abstract void render(Graphics g);
+    public abstract Rectangle getBounds();
     
 //setters
     public void setX(int x) {

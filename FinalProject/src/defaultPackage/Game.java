@@ -27,10 +27,9 @@ public class Game extends Canvas implements Runnable
         
         new Window(WIDTH, HEIGHT, "Bullet Heck", this);
         
-        for(int i = 0; i < 7; i++) {
-        	handler.addObject(new BasicEnemy(random.nextInt(WIDTH),random.nextInt(HEIGHT), ID.Enemy));
-        }
-        handler.addObject(new Player(100, 100, ID.Player, "sprites/DefaultPlayer.png"));
+        
+        handler.addObject(new BasicEnemy(random.nextInt(WIDTH),random.nextInt(HEIGHT), ID.Enemy));
+        handler.addObject(new Player(100, 100, ID.Player, handler));
     }
     
     
