@@ -56,8 +56,5 @@ public abstract class GameObject {
     public ID getID() {
         return id;
     }
-    public Rectangle getHitbox(){
-        return hitbox;
-    }
     
 }

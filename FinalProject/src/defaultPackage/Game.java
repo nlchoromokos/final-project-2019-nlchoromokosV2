@@ -17,7 +17,6 @@ public class Game extends Canvas implements Runnable
     private Handler handler;
     private Random random;
     private HUD hud;
-    private Player player;
     
     public Game(){
         handler = new Handler();
@@ -31,9 +30,7 @@ public class Game extends Canvas implements Runnable
         for(int i = 0; i < 7; i++) {
         	handler.addObject(new BasicEnemy(random.nextInt(WIDTH),random.nextInt(HEIGHT), ID.Enemy));
         }
-        player = new Player(100, 100, ID.Player, "sprites/DefaultPlayer.png");
-        handler.addObject(player);
-        player.setList(handler.getList());
+        handler.addObject(new Player(100, 100, ID.Player, "sprites/DefaultPlayer.png"));
     }
     
     
