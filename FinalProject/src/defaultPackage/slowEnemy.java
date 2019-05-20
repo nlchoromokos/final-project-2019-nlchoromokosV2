@@ -1,19 +1,18 @@
 
 /**
- * Write a description of class Basic Enemy here.
- *
  * @author (your name)
  * @version (a version number or a date)
  */
 import java.awt.*;
 
-public class BasicEnemy extends GameObject{
-
-    public BasicEnemy(int x, int y, ID id){
+public class slowEnemy extends GameObject
+{
+    public slowEnemy(int x, int y, ID id){
        super(x,y,id);
        
-       velX=1;
-       velY=1;
+       velX= 1;
+       velY= 3;
+       
     }
     
     public Rectangle getBounds() {
@@ -35,7 +34,9 @@ public class BasicEnemy extends GameObject{
 
     
     public void render(Graphics g) {
-        g.setColor(Color.red);
+        g.setColor(Color.orange);
         g.fillOval(x, y, 16, 16);
     }
 }
+ 
+

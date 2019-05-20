@@ -26,9 +26,10 @@ public class Game extends Canvas implements Runnable
         this.addKeyListener(new KeyInput(handler));
         
         new Window(WIDTH, HEIGHT, "Bullet Heck", this);
-        
-        
-        handler.addObject(new BasicEnemy(random.nextInt(WIDTH),random.nextInt(HEIGHT), ID.Enemy));
+        for(int i = 0; i < 4; i++){
+            handler.addObject(new BasicEnemy(random.nextInt(WIDTH)-1,random.nextInt(HEIGHT)-1, ID.Enemy));
+            handler.addObject(new slowEnemy(random.nextInt(WIDTH)-1,random.nextInt(HEIGHT)-1, ID.Enemy));
+        }
         handler.addObject(new Player(100, 100, ID.Player, handler));
     }
     
@@ -36,7 +37,7 @@ public class Game extends Canvas implements Runnable
     //-----the heart beat of the game, standard game loop used by everyone-----
     public void run()
     {
-    	this.requestFocus();
+        this.requestFocus();
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 100000000 / amountOfTicks;
@@ -94,12 +95,12 @@ public class Game extends Canvas implements Runnable
     }
     
     public static int clamp(int x, int min, int max) {
-		if (x >= max)
-			return x = max;
-		else if(x <= min)
-			return x = min;
-		else
-			return x;  	
+        if (x >= max)
+            return x = max;
+        else if(x <= min)
+            return x = min;
+        else
+            return x;   
     }
     
     //-----start and stop-----
