@@ -9,7 +9,7 @@ import java.awt.image.*;
 
 public class Player extends GameObject {
     
-	private BufferedImage img;
+    private BufferedImage img;
     Handler handler;
     
     public Player(int x, int y, ID id, Handler handler) {
@@ -20,11 +20,11 @@ public class Player extends GameObject {
         try{
             img = ImageIO.read(new File(filepath));
         }catch(Exception e){System.out.println(e.toString());}
-    	*/ 
+        */ 
     }
 
     public Rectangle getBounds() {
-    	return new Rectangle(x, y, 32, 32);
+        return new Rectangle(x, y, 32, 32);
     }
     
     public void tick() {
@@ -40,16 +40,22 @@ public class Player extends GameObject {
     
     
     private void collision() {
-    	for(int i =0; i < handler.object.size(); i++) {
-    		GameObject tempObject = handler.object.get(i);
-    		
-    		//collision code
-    		if(tempObject.getID() == ID.Enemy) { //temp object is enemy
-    			if(getBounds().intersects(tempObject.getBounds())) { //if the player rectangle is touching the enemy rectangle, health --
-    				HUD.health -= 1;
-    			}
-    		}
-    	}
+        for(int i =0; i < handler.object.size(); i++) {
+            GameObject tempObject = handler.object.get(i);
+            
+            //collision code
+            if(tempObject.getID() == ID.Enemy) { //temp object is enemy
+                if(getBounds().intersects(tempObject.getBounds())) { //if the player rectangle is touching the enemy rectangle, health --
+                    HUD.health -= 1;
+                }
+            }
+            if(tempObject.getID() == ID.Power){
+              if(getBounds().intersects(tempObject.getBounds())) { //if the player rectangle is touching the enemy rectangle, health --
+                    HUD.health += 10;
+                    handler.removeObject(tempObject);
+                }
+            }
+        }
     }
 
     

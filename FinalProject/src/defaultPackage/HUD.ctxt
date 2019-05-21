@@ -2,6 +2,8 @@
 comment0.target=HUD
 comment1.params=
 comment1.target=void\ tick()
-comment2.params=g
-comment2.target=void\ render(java.awt.Graphics)
-numComments=3
+comment2.params=
+comment2.target=int\ getHealth()
+comment3.params=g
+comment3.target=void\ render(java.awt.Graphics)
+numComments=4

@@ -7,13 +7,13 @@ import javax.swing.JFrame;
 
 public class Window extends Canvas{
 
-	private static final long serialVersionUID = 1041310355284726095L;
+    private static final long serialVersionUID = 1041310355284726095L;
 
-	public Window(int width, int height, String title, Game game) {
-		JFrame frame = new JFrame(title); //created a JFrame
-		
-		//sets the dimensions of the frame 
-		frame.setPreferredSize(new Dimension(width, height));
+    public Window(int width, int height, String title, Game game) {
+        JFrame frame = new JFrame(title); //created a JFrame
+        
+        //sets the dimensions of the frame 
+        frame.setPreferredSize(new Dimension(width, height));
         frame.setMaximumSize(new Dimension(width, height));
         frame.setMinimumSize(new Dimension(width, height));
         
@@ -27,6 +27,6 @@ public class Window extends Canvas{
         frame.setLocationRelativeTo(null); //keeps the screen center upon opening
         frame.add(game); //adds the game to the frame
         frame.setVisible(true); //lets you actually see the window
-        game.start(); //starts the game
-	}	
+        game.start(); //starts the game  
+    }
 }
