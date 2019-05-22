@@ -8,3 +8,6 @@
 /Window.class
 /BasicEnemy.class
 /HUD.class
+/HealthUp.class
+/slowEnemy.class
+/Spawner.class

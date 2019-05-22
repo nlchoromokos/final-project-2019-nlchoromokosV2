@@ -15,12 +15,7 @@ public class Player extends GameObject {
     public Player(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
-        
-        /*
-        try{
-            img = ImageIO.read(new File(filepath));
-        }catch(Exception e){System.out.println(e.toString());}
-        */ 
+
     }
 
     public Rectangle getBounds() {
@@ -28,10 +23,10 @@ public class Player extends GameObject {
     }
     
     public void tick() {
-        if(x+velX > 0 && x+33+velX < 640){
+        if(x+velX > 0 && x+33+velX < 750){
             x += velX;
         }
-        if(y+velY > 0 && y+64+velY < (480)){
+        if(y+velY > 0 && y-12+velY < (488)){
             y += velY;
         }
         

@@ -10,7 +10,7 @@ public class Game extends Canvas implements Runnable
 {
     private static final long serialVersionUID = 1L;
     
-    public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9; // 12/9 aspect ratio
+    public static final int WIDTH = 750, HEIGHT = WIDTH / 12 * 9; // 12/9 aspect ratio
     private Thread thread;
     private boolean running = false;
     
@@ -28,7 +28,7 @@ public class Game extends Canvas implements Runnable
         new Window(WIDTH, HEIGHT, "Bullet Heck", this);
         for(int i = 0; i < 4; i++){
             handler.addObject(new BasicEnemy(random.nextInt(WIDTH)-1,random.nextInt(HEIGHT)-1, ID.Enemy));
-            //handler.addObject(new slowEnemy(random.nextInt(WIDTH)-1,random.nextInt(HEIGHT)-1, ID.Enemy));
+            handler.addObject(new slowEnemy(random.nextInt(WIDTH)-1,random.nextInt(HEIGHT)-1, ID.Enemy));
         }
         handler.addObject(new Player(100, 100, ID.Player, handler));
         handler.addObject(new HealthUp(random.nextInt(WIDTH)-1, random.nextInt(HEIGHT)-1, ID.Power));
@@ -41,7 +41,7 @@ public class Game extends Canvas implements Runnable
         this.requestFocus();
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
-        double ns = 100000000 / amountOfTicks;
+        double ns = 1000000000 / amountOfTicks;
         double delta = 0;
         long timer = System.currentTimeMillis();
         int frames = 0;
