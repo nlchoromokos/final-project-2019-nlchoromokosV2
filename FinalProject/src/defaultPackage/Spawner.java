@@ -7,18 +7,27 @@ public class Spawner {
     HUD hud = new HUD();
     Handler handler = new Handler();
     
-    public Spawner(Handler handler, HUD hud, int height, int width) {
+    public Spawner(Handler handler, HUD hud, int Height, int Width) {
         this.handler = handler;
         this.hud = hud;
-        height = height;
-        width = width;
+        height = Height;
+        width = Width;
     }
     
     
     public void tick(){
-        try{if(hud.score%100 == 0){
+        if(hud.score%500 == 0){
+            handler.addObject(new slowEnemy(random.nextInt(width)-1,random.nextInt(height)-1, ID.Enemy));
+        }
+        if(hud.score%1000 == 0){
             handler.addObject(new BasicEnemy(random.nextInt(width)-1,random.nextInt(height)-1, ID.Enemy));
-        }}catch(Exception e) {System.out.println("yikes");}
+        }
+        if(hud.score%2000 == 0){
+            handler.addObject(new fastEnemy(random.nextInt(width)-1,random.nextInt(height)-1, ID.Fast));
+        }
+        if(hud.score%2500 == 0){
+            handler.addObject(new Medpack(random.nextInt(width)-1, random.nextInt(height)-1, ID.Power));
+        }
     }
     
     
