@@ -50,6 +50,12 @@ public class Player extends GameObject {
                     handler.removeObject(tempObject);
                 }
             }
+            if(tempObject.getID() == ID.Fast){
+              if(getBounds().intersects(tempObject.getBounds())) { //if the player rectangle is touching the enemy rectangle, health --
+                    HUD.health -= 10;
+                    handler.removeObject(tempObject);
+                }
+            }
         }
     }
 

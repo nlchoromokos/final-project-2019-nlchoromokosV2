@@ -6,9 +6,9 @@
  * @version (a version number or a date)
  */
 import java.awt.*;
-public class HealthUp extends GameObject
+public class Medpack extends GameObject
 {
-    public HealthUp(int x, int y, ID id){
+    public Medpack(int x, int y, ID id){
        super(x,y,id);
     }
     

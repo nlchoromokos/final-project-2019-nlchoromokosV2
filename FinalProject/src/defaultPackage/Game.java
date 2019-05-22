@@ -17,21 +17,19 @@ public class Game extends Canvas implements Runnable
     private Handler handler;
     private Random random;
     private HUD hud;
+    private Spawner spawn;
     
     public Game(){
         handler = new Handler();
         hud = new HUD();
         random = new Random();
+        spawn = new Spawner(handler, hud, HEIGHT, WIDTH);
         
         this.addKeyListener(new KeyInput(handler));
         
         new Window(WIDTH, HEIGHT, "Bullet Heck", this);
-        for(int i = 0; i < 4; i++){
-            handler.addObject(new BasicEnemy(random.nextInt(WIDTH)-1,random.nextInt(HEIGHT)-1, ID.Enemy));
-            handler.addObject(new slowEnemy(random.nextInt(WIDTH)-1,random.nextInt(HEIGHT)-1, ID.Enemy));
-        }
+
         handler.addObject(new Player(100, 100, ID.Player, handler));
-        handler.addObject(new HealthUp(random.nextInt(WIDTH)-1, random.nextInt(HEIGHT)-1, ID.Power));
     }
     
     
@@ -73,6 +71,7 @@ public class Game extends Canvas implements Runnable
     private void tick() {
         handler.tick();
         hud.tick();
+        spawn.tick();
     }
     
     //draws onto the screen
