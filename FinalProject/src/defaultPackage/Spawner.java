@@ -28,6 +28,10 @@ public class Spawner {
         if(hud.score%2500 == 0){
             handler.addObject(new Medpack(random.nextInt(width)-1, random.nextInt(height)-1, ID.Power));
         }
+        if(hud.score%5000 == 0)
+        {
+            handler.addObject(new bigEnemy(random.nextInt(width)-1,random.nextInt(height)-1, ID.Fast));
+        }
     }
     
     
