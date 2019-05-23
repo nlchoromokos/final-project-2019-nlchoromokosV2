@@ -6,11 +6,11 @@ public class fastEnemy extends GameObject
        super(x,y,id);
        
        velX= 10;
-       velY= 10;
+       velY= 4;
     }
     
     public Rectangle getBounds() {
-    	return new Rectangle(x, y, 16, 16);
+    	return new Rectangle(x, y, 10, 10);
     }
     
     public void tick() {
@@ -29,6 +29,6 @@ public class fastEnemy extends GameObject
     
     public void render(Graphics g) {
         g.setColor(Color.green);
-        g.fillOval(x, y, 16, 16);
+        g.fillOval(x, y, 10, 10);
     }
 }

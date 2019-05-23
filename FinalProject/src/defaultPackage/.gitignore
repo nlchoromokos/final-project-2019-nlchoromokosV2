@@ -11,3 +11,8 @@
 /HealthUp.class
 /slowEnemy.class
 /Spawner.class
+/Medpack.class
+/bigEnemy.class
+/fastEnemy.class
+/BossEnemy.class
+/AIenemy.class

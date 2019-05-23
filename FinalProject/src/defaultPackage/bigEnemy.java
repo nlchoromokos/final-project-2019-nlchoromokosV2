@@ -11,7 +11,7 @@ public class bigEnemy extends GameObject
     }
     
     public Rectangle getBounds() {
-    	return new Rectangle(x, y, 16, 16);
+    	return new Rectangle(x, y, 50, 50);
     }
     
     public void tick() {
@@ -29,7 +29,7 @@ public class bigEnemy extends GameObject
 
     
     public void render(Graphics g) {
-        g.setColor(Color.purple);
+        g.setColor(Color.cyan);
         g.fillRect(x, y, 50, 50);
     }
 }

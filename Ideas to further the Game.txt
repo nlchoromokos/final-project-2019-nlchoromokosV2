@@ -1,5 +1,5 @@
-1. Score System and Spawning system
+1. Score System and Spawning system -- done
 2. Game to stop on death or game over screen
-3. More eneimes and power ups
+3. More eneimes and power ups -- currently have slow, basic, fast, big, tracking         medpack, 
 4. Music
 5. Extra details in the graphics
