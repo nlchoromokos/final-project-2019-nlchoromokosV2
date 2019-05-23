@@ -55,6 +55,7 @@ public class Player extends GameObject {
                     handler.removeObject(tempObject);
                 }
             }
+            
         }
     }
 

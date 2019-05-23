@@ -32,8 +32,8 @@ public class AIenemy extends GameObject {
 	        float diffY = y - player.getY() - 8;
 	        float distance = (float) Math.sqrt( (x-player.getX()) * (x-player.getX()) + (y-player.getY()) * (y-player.getY()) ); //distance formula
 	        
-	        velX = (int) ((-1.0/distance) * diffX*3);
-	        velY = (int) ((-1.0/distance) * diffY*3);
+	        velX = (int) ((-1.0/distance) * diffX * 3);
+	        velY = (int) ((-1.0/distance) * diffY * 3);
 	        
 	        //this can be cleaned up with a clamp method
 	        if (y <= 0 || y >= Game.HEIGHT - 48) {
