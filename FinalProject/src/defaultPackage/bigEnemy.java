@@ -7,7 +7,6 @@ public class bigEnemy extends GameObject
        
        velX= 1;
        velY= 1;
-       
     }
     
     public Rectangle getBounds() {

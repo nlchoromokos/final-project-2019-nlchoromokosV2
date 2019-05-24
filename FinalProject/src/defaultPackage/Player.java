@@ -39,7 +39,7 @@ public class Player extends GameObject {
             GameObject tempObject = handler.object.get(i);
             
             //collision code
-            if(tempObject.getID() == ID.Enemy || tempObject.getID() == ID.Slow) { //temp object is enemy
+            if(tempObject.getID() == ID.Enemy || tempObject.getID() == ID.Slow || tempObject.getID() == ID.Random) { //temp object is enemy
                 if(getBounds().intersects(tempObject.getBounds())) { //if the player rectangle is touching the enemy rectangle, health --
                     HUD.health -= 1;
                     return true;
@@ -56,6 +56,12 @@ public class Player extends GameObject {
               if(getBounds().intersects(tempObject.getBounds())) { //if the player rectangle is touching the enemy rectangle, health --
                     HUD.health -= 10;
                     handler.removeObject(tempObject);
+                    return true;
+                }
+            }
+            if(tempObject.getID() == ID.Big) { //temp object is enemy
+                if(getBounds().intersects(tempObject.getBounds())) { //if the player rectangle is touching the enemy rectangle, health --
+                    HUD.health -= 25;
                     return true;
                 }
             }
