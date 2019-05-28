@@ -1,13 +1,12 @@
 #BlueJ class context
-comment0.target=Player
-comment1.params=x\ y\ id\ handler\ hud
-comment1.target=Player(int,\ int,\ ID,\ Handler,\ HUD)
+comment0.params=x\ y\ id\ handler\ hud
+comment0.target=Player(int,\ int,\ ID,\ Handler,\ HUD)
+comment1.params=
+comment1.target=java.awt.Rectangle\ getBounds()
 comment2.params=
-comment2.target=java.awt.Rectangle\ getBounds()
+comment2.target=void\ tick()
 comment3.params=
-comment3.target=void\ tick()
-comment4.params=
-comment4.target=boolean\ collision()
-comment5.params=g
-comment5.target=void\ render(java.awt.Graphics)
-numComments=6
+comment3.target=boolean\ collision()
+comment4.params=g
+comment4.target=void\ render(java.awt.Graphics)
+numComments=5
