@@ -2,14 +2,14 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class AIenemy extends GameObject {
+public class EnemyAI extends GameObject {
 	
 	@SuppressWarnings("unused")
 	private Handler handler;
 	@SuppressWarnings("unused")
 	private GameObject player;
 	
-	public AIenemy(int x, int y, ID id, Handler handler){
+	public EnemyAI(int x, int y, ID id, Handler handler){
 	    super(x,y,id);
 	    this.handler = handler;
 	    

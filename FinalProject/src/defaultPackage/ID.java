@@ -7,6 +7,7 @@ public enum ID {
 	Slow(),
 	Fast(),
 	Big(),
+	Boss(),
 	Random(),
 	Smart(),
 	Enemy();
