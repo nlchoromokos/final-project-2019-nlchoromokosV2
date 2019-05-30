@@ -17,6 +17,10 @@ public class HUD {
         return health;
     }
     
+    public int getWave() {
+    	return wave;
+    }
+    
     public void render(Graphics g) {
         String score2 = "Score: " + score;
         String wave2 = "Wave: " + wave;

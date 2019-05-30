@@ -5,6 +5,7 @@ public class Spawner {
     Random random = new Random();
     HUD hud = new HUD();
     Handler handler = new Handler();
+    int scoreKeep = 0;
     
     public Spawner(Handler handler, HUD hud, int Height, int Width) {
         this.handler = handler;
@@ -15,28 +16,45 @@ public class Spawner {
     
     
     public void tick(){
+    	scoreKeep++;
     	
-        if(hud.score%500 == 0){
-            handler.addObject(new EnemySlow(random.nextInt(width)-1,random.nextInt(height)-1, ID.Slow)); 
-        }
-        if(hud.score%1000 == 0){
-            handler.addObject(new EnemyBasic(random.nextInt(width)-1,random.nextInt(height)-1, ID.Enemy));
-            hud.wave++;
-        }
-        if(hud.score%2000 == 0){
-            handler.addObject(new EnemyFast(random.nextInt(width)-1,random.nextInt(height)-1, ID.Fast));
-            handler.addObject(new EnemyAI(random.nextInt(width)-1,random.nextInt(height)-1, ID.Smart, handler));
-        }
-        if(hud.score%2500 == 0){
-            handler.addObject(new Medpack(random.nextInt(width)-1, random.nextInt(height)-1, ID.Power));
-        }
-        if(hud.score%300 == 0) 
-        {
-        	handler.addObject(new SpeedPower(-10, random.nextInt(height), ID.Power2));
-        }
-        if(hud.score%5000 == 0){
-        	handler.clearEnemy();
-            handler.addObject(new EnemyBoss(width/2-64, 0, ID.Boss, handler));
-        }
-    }  
-}
+    	if (scoreKeep >= 1000) {
+    		scoreKeep = 0;
+    		
+    		if(hud.score%1000 == 0){
+                hud.wave++;
+            }
+            if(hud.getWave() == 1) {
+            	handler.addObject(new EnemySlow(random.nextInt(width), random.nextInt(height), ID.Slow));
+            	handler.addObject(new EnemySlow(random.nextInt(width), random.nextInt(height), ID.Slow));
+            }
+            if(hud.getWave() == 2) {
+            	handler.addObject(new EnemyBasic(random.nextInt(width)-5, random.nextInt(height)-5, ID.Enemy));
+            	handler.addObject(new EnemyBasic(random.nextInt(width)-5, random.nextInt(height)-5, ID.Enemy));
+            	handler.addObject(new EnemyBasic(random.nextInt(width)-5, random.nextInt(height)-5, ID.Enemy));
+            	handler.addObject(new EnemyBasic(random.nextInt(width)-5, random.nextInt(height)-5, ID.Enemy));
+
+            }
+            if(hud.getWave() == 3) {
+            	handler.addObject(new EnemyBasic(random.nextInt(width)-5, random.nextInt(height)-5, ID.Enemy));
+            	handler.addObject(new EnemyAI(random.nextInt(width)-5, random.nextInt(height)-5, ID.Smart, handler));
+            	handler.addObject(new EnemyBasic(random.nextInt(width)-5, random.nextInt(height)-5, ID.Enemy));
+            	handler.addObject(new EnemyAI(random.nextInt(width)-5, random.nextInt(height)-5, ID.Smart, handler));
+            	handler.addObject(new SpeedPower(-10, random.nextInt(height)-5, ID.Power2));
+            }
+            if(hud.getWave() == 4) {
+            	handler.addObject(new EnemyFast(random.nextInt(width)-5, random.nextInt(height)-5, ID.Fast));;
+            	handler.addObject(new EnemyAI(random.nextInt(width)-5, random.nextInt(height)-5, ID.Smart, handler));
+            	handler.addObject(new EnemyFast(random.nextInt(width)-5, random.nextInt(height)-5, ID.Fast));;
+            	handler.addObject(new EnemyAI(random.nextInt(width)-5, random.nextInt(height)-5, ID.Smart, handler));
+            	handler.addObject(new Medpack(-10, random.nextInt(height)-5, ID.Power));
+            }
+            if(hud.getWave() == 5) {
+            	handler.clearEnemy();
+            	handler.addObject(new EnemyBoss(width/2-96, 0, ID.Boss, handler));
+            }
+    		
+    	}
+    }
+}  
+
