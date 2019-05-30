@@ -16,3 +16,9 @@
 /fastEnemy.class
 /BossEnemy.class
 /AIenemy.class
+/EnemyAI.class
+/EnemyBasic.class
+/EnemyBig.class
+/EnemyFast.class
+/EnemySlow.class
+/EnemyBoss.class
