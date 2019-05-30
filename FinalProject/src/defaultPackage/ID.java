@@ -10,7 +10,8 @@ public enum ID {
 	Boss(),
 	Random(),
 	Smart(),
-	Enemy();
+	Enemy(),
+	Power2()
 	
 
 }

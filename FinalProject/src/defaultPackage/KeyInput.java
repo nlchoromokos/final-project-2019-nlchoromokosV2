@@ -1,4 +1,4 @@
- 
+
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -20,11 +20,23 @@ public class KeyInput extends KeyAdapter{
 			
 			if(tempObject.getID() == ID.Player) {
 				//key events for player 1
-				if(key == KeyEvent.VK_W) {tempObject.setVelY(-7);}
-				if(key == KeyEvent.VK_S) {tempObject.setVelY(7);}
-				if(key == KeyEvent.VK_D) {tempObject.setVelX(7);}
-				if(key == KeyEvent.VK_A) {tempObject.setVelX(-7);}
+				Player obj = (Player) (tempObject);
+				if(obj.speed==false) 
+				{
+					if(key == KeyEvent.VK_W) {tempObject.setVelY(-7);}
+					if(key == KeyEvent.VK_S) {tempObject.setVelY(7);}
+					if(key == KeyEvent.VK_D) {tempObject.setVelX(7);}
+					if(key == KeyEvent.VK_A) {tempObject.setVelX(-7);}
 				}
+				if(obj.speed==true) 
+				{
+					if(key == KeyEvent.VK_W) {tempObject.setVelY(-10);}
+					if(key == KeyEvent.VK_S) {tempObject.setVelY(10);}
+					if(key == KeyEvent.VK_D) {tempObject.setVelX(10);}
+					if(key == KeyEvent.VK_A) {tempObject.setVelX(-10);}
+					
+				}
+			}
 		}
 		
 		if(key == KeyEvent.VK_ESCAPE) {System.exit(1);} //closes the game with escape
