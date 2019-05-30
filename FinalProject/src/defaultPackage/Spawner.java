@@ -15,22 +15,26 @@ public class Spawner {
     
     
     public void tick(){
+    	if(hud.score%20 == 0) 
+    	{
+    		handler.addObject(new Medpack(-10, random.nextInt(height)-1, ID.Power));
+    	}
         if(hud.score%500 == 0){
-            handler.addObject(new EnemySlow(random.nextInt(width)-1,random.nextInt(height)-1, ID.Slow)); 
+            handler.addObject(new slowEnemy(random.nextInt(width)-1,random.nextInt(height)-1, ID.Slow)); 
         }
         if(hud.score%1000 == 0){
-            handler.addObject(new EnemyBasic(random.nextInt(width)-1,random.nextInt(height)-1, ID.Enemy));
+            handler.addObject(new BasicEnemy(random.nextInt(width)-1,random.nextInt(height)-1, ID.Enemy));
             hud.wave++;
         }
         if(hud.score%2000 == 0){
-            handler.addObject(new EnemyFast(random.nextInt(width)-1,random.nextInt(height)-1, ID.Fast));
-            handler.addObject(new EnemyAI(random.nextInt(width)-1,random.nextInt(height)-1, ID.Smart, handler));
+            handler.addObject(new fastEnemy(random.nextInt(width)-1,random.nextInt(height)-1, ID.Fast));
+            handler.addObject(new AIenemy(random.nextInt(width)-1,random.nextInt(height)-1, ID.Smart, handler));
         }
         if(hud.score%2500 == 0){
-            handler.addObject(new Medpack(random.nextInt(width)-1, random.nextInt(height)-1, ID.Power));
+            handler.addObject(new Medpack(-10, random.nextInt(height)-1, ID.Power));
         }
         if(hud.score%5000 == 0){
-            handler.addObject(new EnemyBig(random.nextInt(width)-1,random.nextInt(height)-1, ID.Fast));
+            handler.addObject(new bigEnemy(random.nextInt(width)-1,random.nextInt(height)-1, ID.Fast));
         }
     }  
 }
