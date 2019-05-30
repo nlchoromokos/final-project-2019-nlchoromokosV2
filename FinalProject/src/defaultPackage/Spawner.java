@@ -15,6 +15,7 @@ public class Spawner {
     
     
     public void tick(){
+    	
         if(hud.score%500 == 0){
             handler.addObject(new EnemySlow(random.nextInt(width)-1,random.nextInt(height)-1, ID.Slow)); 
         }
@@ -30,7 +31,8 @@ public class Spawner {
             handler.addObject(new Medpack(random.nextInt(width)-1, random.nextInt(height)-1, ID.Power));
         }
         if(hud.score%5000 == 0){
-            handler.addObject(new EnemyBig(random.nextInt(width)-1,random.nextInt(height)-1, ID.Fast));
+        	handler.clearEnemy();
+            handler.addObject(new EnemyBoss(width/2-64, 0, ID.Boss, handler));
         }
     }  
 }
