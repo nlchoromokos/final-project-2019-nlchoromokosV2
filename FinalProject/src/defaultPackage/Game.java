@@ -14,10 +14,19 @@ public class Game extends Canvas implements Runnable
     private Thread thread;
     private boolean running = false;
     
-    private Handler handler;
+    public Handler handler;
     private Random random;
     private HUD hud;
     private Spawner spawn;
+    private Menu menu;
+    
+    public enum STATE 
+    {
+        Menu,
+        Game,
+        Death
+    }
+    public STATE gameState = STATE.Menu;
     
     public Game(){
         handler = new Handler();
@@ -28,9 +37,33 @@ public class Game extends Canvas implements Runnable
         this.addKeyListener(new KeyInput(handler));
         
         new Window(WIDTH, HEIGHT, "Bullet Heck", this, hud);
+        
+        if(gameState == STATE.Game) 
+        {
+            handler.addObject(new Player(100, 100, ID.Player, handler, hud));
+            handler.addObject(new EnemySlow(random.nextInt(WIDTH)-5, random.nextInt(HEIGHT)-5, ID.Slow));
+            handler.addObject(new EnemySlow(random.nextInt(WIDTH), random.nextInt(HEIGHT), ID.Slow));
+            handler.addObject(new EnemySlow(random.nextInt(WIDTH), random.nextInt(HEIGHT), ID.Slow));}
+        menu = new Menu(this);
+        if(gameState == STATE.Game) 
+        {
+            handler.addObject(new Player(100, 100, ID.Player, handler, hud));
+            handler.addObject(new EnemySlow(random.nextInt(WIDTH)-5, random.nextInt(HEIGHT)-5, ID.Slow));
+            handler.addObject(new EnemySlow(random.nextInt(WIDTH), random.nextInt(HEIGHT), ID.Slow));
+            handler.addObject(new EnemySlow(random.nextInt(WIDTH), random.nextInt(HEIGHT), ID.Slow));}
+        }
 
-        handler.addObject(new Player(100, 100, ID.Player, handler, hud));
-        handler.addObject(new slowEnemy(random.nextInt(WIDTH),random.nextInt(HEIGHT), ID.Slow));
+    public void setGameState(int i)
+    {
+        if(i==0){
+            gameState = STATE.Menu;
+        }
+        else if(i==1){
+            gameState = STATE.Game;
+        }
+        else if(i==2){
+            gameState = STATE.Death;
+        }
     }
     
     
@@ -71,8 +104,16 @@ public class Game extends Canvas implements Runnable
     //updates whatever is in here
     private void tick() {
         handler.tick();
-        hud.tick();
-        spawn.tick();
+        if(gameState == STATE.Game) {
+            hud.tick();
+            spawn.tick();
+            if(hud.getHealth() <=0) {
+                gameState=STATE.Death;
+            }
+        }
+        if(gameState == STATE.Menu) {
+            menu.tick();
+        }
     }
     
     //draws onto the screen
@@ -88,8 +129,22 @@ public class Game extends Canvas implements Runnable
         g.setColor(Color.black);
         g.fillRect( 0, 0, WIDTH, HEIGHT);
         
-        handler.render(g);
-        hud.render(g);
+        
+        if(gameState == STATE.Game) {
+            hud.render(g);
+            handler.render(g);
+        }
+        if(gameState == STATE.Menu){
+            g.setColor(Color.white);
+            g.drawString("Start", 130, 150);
+            menu.render(g);
+        }
+        else if(gameState == STATE.Death) 
+        {
+            g.setColor(Color.white);
+            g.drawString("You Died", WIDTH/2, HEIGHT/2);
+            g.drawString("Score: "+hud.score, (WIDTH/2), (HEIGHT/2)+20);
+        }
         
         g.dispose();
         bs.show();
@@ -120,6 +175,7 @@ public class Game extends Canvas implements Runnable
     }
     
     public static void main(String args[]){
-      new Game(); 
-    }
+      new Game();
+        }
+    
 }

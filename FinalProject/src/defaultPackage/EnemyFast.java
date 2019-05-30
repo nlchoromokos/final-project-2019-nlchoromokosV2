@@ -1,16 +1,16 @@
 import java.awt.*;
 
-public class bigEnemy extends GameObject
+public class EnemyFast extends GameObject
 {
-    public bigEnemy(int x, int y, ID id){
+    public EnemyFast(int x, int y, ID id){
        super(x,y,id);
        
-       velX= 1;
-       velY= 1;
+       velX= 10;
+       velY= 4;
     }
     
     public Rectangle getBounds() {
-    	return new Rectangle(x, y, 50, 50);
+    	return new Rectangle(x, y, 10, 10);
     }
     
     public void tick() {
@@ -28,7 +28,7 @@ public class bigEnemy extends GameObject
 
     
     public void render(Graphics g) {
-        g.setColor(Color.cyan);
-        g.fillRect(x, y, 50, 50);
+        g.setColor(Color.green);
+        g.fillOval(x, y, 10, 10);
     }
 }

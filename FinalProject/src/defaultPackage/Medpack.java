@@ -8,21 +8,18 @@
 import java.awt.*;
 public class Medpack extends GameObject
 {
+	int velX;
     public Medpack(int x, int y, ID id){
        super(x,y,id);
+       velX=1;
     }
     
     public Rectangle getBounds() {
         return new Rectangle(x, y, 20, 20);
     }
     
-    public void tick() {
-        if (y <= 0 || y >= Game.HEIGHT - 32) {
-            velY *= -1;
-        }
-        if (x <= 0 || x >= Game.WIDTH - 32) {
-            velX *= -1;
-        }
+    public void tick() {   
+        x+=velX;
     }
 
     
@@ -34,4 +31,3 @@ public class Medpack extends GameObject
         g.fillRect(x+2, y+7, 16, 6);
     }
 }
-

@@ -10,12 +10,16 @@ public class Player extends GameObject {
     Color color;
     Handler handler;
     HUD hud;
+    public boolean speed;
+    public int speedCount;
     
     public Player(int x, int y, ID id, Handler handler, HUD hud) {
         super(x, y, id);
         this.handler = handler;
         this.hud = hud;
         color = Color.white;
+        speed=false;
+		speedCount=0;
     }
 
     public Rectangle getBounds() {
@@ -31,6 +35,15 @@ public class Player extends GameObject {
         }
         
         collision();
+        if(speed == true) 
+        {
+        	speedCount++;
+        	if(speedCount>600) 
+        	{
+        		speed=false;
+        		speedCount=0;
+        	}
+        }
     }
     
     
@@ -52,6 +65,13 @@ public class Player extends GameObject {
                     return true;
                 }
             }
+            if(tempObject.getID() == ID.Power2){
+                if(getBounds().intersects(tempObject.getBounds())) { //if the player rectangle is touching the enemy rectangle, health --
+                      speed=true;
+                      handler.removeObject(tempObject);
+                      return true;
+                  }
+              }
             if(tempObject.getID() == ID.Fast || tempObject.getID() == ID.Smart){
               if(getBounds().intersects(tempObject.getBounds())) { //if the player rectangle is touching the enemy rectangle, health --
                     HUD.health -= 10;
@@ -68,6 +88,7 @@ public class Player extends GameObject {
         }
         return false;
     }
+    public boolean getSpeed(){return speed;}
 
     
     public void render(Graphics g) {
